@@ -1,0 +1,16 @@
+# IDE / Editor
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs & temp
+*.log
+_diag*.html
+_dom.html
+scratchpad/
+*.tmp
