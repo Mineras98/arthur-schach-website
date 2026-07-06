@@ -137,7 +137,7 @@ h2.display { font-size: clamp(1.9rem, 3.6vw, 2.7rem); margin-bottom: .3em; }
 }
 .nav__links a:hover { color: var(--ink); background: rgba(28,27,24,.05); }
 .nav__links a.active { color: var(--brass-dark); font-weight: 600; }
-.nav__cta { margin-left: 8px; flex: none; }
+.nav__cta { margin-left: 8px; flex: none; align-self: center; padding-top: 12px; padding-bottom: 12px; line-height: 1.15; }
 .nav__cta-mobile { display: none; }  /* nur im Handy-Menü sichtbar, siehe Media Query */
 .nav__toggle { display: none; background: none; border: 0; cursor: pointer; padding: 8px; margin: -8px -8px -8px 0; flex: none; }
 .nav__toggle span { display: block; width: 24px; height: 2px; background: var(--ink); margin: 5px 0; transition: .25s var(--ease); border-radius: 2px; }
@@ -328,7 +328,7 @@ h2.display { font-size: clamp(1.9rem, 3.6vw, 2.7rem); margin-bottom: .3em; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
 }
 /* Navigation klappt früh genug um, damit die Links nie überlaufen */
-@media (max-width: 960px) {
+@media (max-width: 1080px) {
   .nav__cta { display: none; }
   .nav__toggle { display: block; }
   .nav__links {
