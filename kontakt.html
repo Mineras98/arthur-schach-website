@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=4">
+  <link rel="stylesheet" href="assets/css/styles.css?v=5">
 </head>
 <body>
   <a href="#main" class="skip-link">Zum Inhalt springen</a>
@@ -55,7 +55,14 @@
             <div class="card" style="padding:32px;">
               <h2 style="font-size:1.5rem;margin-bottom:6px;">Anfrage senden</h2>
               <p style="color:var(--muted);">Fülle einfach das Formular aus – ich melde mich zeitnah zurück.</p>
-              <form id="contact-form" class="form" novalidate>
+              <form id="contact-form" class="form" data-email="info@schachtraining-artur.com" action="https://formsubmit.co/info@schachtraining-artur.com" method="POST">
+                <!-- FormSubmit-Einstellungen -->
+                <input type="hidden" name="_subject" value="Neue Trainingsanfrage über schachtraining-artur.com">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://schachtraining-artur.com/danke.html">
+                <!-- Spam-Falle (von Menschen nicht sichtbar, nicht ausfüllen) -->
+                <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
                 <div class="form__row">
                   <div class="field">
                     <label for="name">Name *</label>
@@ -92,7 +99,7 @@
                   <label for="consent">Ich bin einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage verwendet werden. Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.</label>
                 </div>
                 <button type="submit" class="btn btn--primary btn--lg" style="width:100%;justify-content:center;">Anfrage absenden</button>
-                <p class="form__hint">Mit dem Absenden öffnet sich dein E-Mail-Programm mit der fertigen Nachricht. Alternativ schreib direkt an <a href="mailto:info@schachtraining-artur.com">info@schachtraining-artur.com</a>.</p>
+                <p class="form__hint">Deine Anfrage wird direkt an mich gesendet. Alternativ schreib gern an <a href="mailto:info@schachtraining-artur.com">info@schachtraining-artur.com</a>.</p>
                 <p id="form-status" role="status" hidden style="background:var(--brass-soft);border-radius:10px;padding:12px 14px;font-size:.92rem;color:var(--ink-2);margin:0;"></p>
               </form>
             </div>
@@ -177,6 +184,6 @@
       </div>
     </div>
   </footer>
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js?v=5"></script>
 </body>
 </html>

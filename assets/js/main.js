@@ -39,35 +39,49 @@
   // ---- Contact form -> mailto (no backend required) ----
   var form = document.getElementById("contact-form");
   if (form) {
+    var status = document.getElementById("form-status");
+    var endpoint = "https://formsubmit.co/ajax/" + (form.getAttribute("data-email") || "info@schachtraining-artur.com");
+
+    function showStatus(msg, ok) {
+      if (!status) return;
+      status.hidden = false;
+      status.style.background = ok ? "var(--brass-soft)" : "#fbe6e2";
+      status.style.color = ok ? "var(--ink-2)" : "#8a2b1c";
+      status.textContent = msg;
+    }
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var f = form.elements;
-      var name = (f.name && f.name.value || "").trim();
-      var email = (f.email && f.email.value || "").trim();
-      var phone = (f.phone && f.phone.value || "").trim();
-      var subject = (f.subject && f.subject.value || "Trainingsanfrage").trim();
-      var message = (f.message && f.message.value || "").trim();
+      if (typeof form.reportValidity === "function" && !form.reportValidity()) return;
 
-      var body =
-        "Name: " + name + "\n" +
-        "E-Mail: " + email + "\n" +
-        (phone ? "Telefon: " + phone + "\n" : "") +
-        "Interesse: " + subject + "\n\n" +
-        message + "\n";
+      var btn = form.querySelector('button[type="submit"]');
+      var original = btn ? btn.textContent : "";
+      if (btn) { btn.disabled = true; btn.textContent = "Wird gesendet …"; }
+      if (status) { status.hidden = true; }
 
-      var href = "mailto:info@schachtraining-artur.com" +
-        "?subject=" + encodeURIComponent("Anfrage: " + subject) +
-        "&body=" + encodeURIComponent(body);
-
-      window.location.href = href;
-
-      var status = document.getElementById("form-status");
-      if (status) {
-        status.hidden = false;
-        status.textContent =
-          "Danke! Dein E-Mail-Programm öffnet sich mit der fertigen Nachricht. " +
-          "Falls nicht, schreib gern direkt an info@schachtraining-artur.com.";
-      }
+      fetch(endpoint, {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: new FormData(form)
+      })
+        .then(function (r) { return r.json().catch(function () { return {}; }); })
+        .then(function (json) {
+          if (json && (json.success === true || json.success === "true")) {
+            showStatus("Vielen Dank! Deine Anfrage wurde gesendet – ich melde mich zeitnah bei dir.", true);
+            form.reset();
+          } else if (json && json.message) {
+            // z. B. Hinweis zur einmaligen Aktivierung von FormSubmit
+            showStatus(json.message, true);
+          } else {
+            throw new Error("no success");
+          }
+        })
+        .catch(function () {
+          showStatus("Das Senden hat leider nicht geklappt. Bitte schreib direkt an info@schachtraining-artur.com oder ruf an: +49 157 53393009.", false);
+        })
+        .finally(function () {
+          if (btn) { btn.disabled = false; btn.textContent = original; }
+        });
     });
   }
 
