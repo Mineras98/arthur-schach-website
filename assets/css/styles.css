@@ -110,6 +110,9 @@ h2.display { font-size: clamp(1.9rem, 3.6vw, 2.7rem); margin-bottom: .3em; }
 .btn--ghost:hover { border-color: var(--ink); color: var(--ink); background: rgba(0,0,0,.02); }
 .btn--on-dark { background: transparent; color: #fff; border-color: rgba(255,255,255,.35); }
 .btn--on-dark:hover { background: #fff; color: var(--dark); border-color: #fff; }
+.btn--whatsapp { background: #1fa855; color: #fff; box-shadow: 0 6px 18px rgba(31,168,85,.28); }
+.btn--whatsapp:hover { background: #18904a; color: #fff; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(31,168,85,.36); }
+.btn--whatsapp svg { width: 1.3em; height: 1.3em; }
 .btn--lg { padding: 17px 34px; font-size: 1.05rem; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 14px; }
 .btn-row.center { justify-content: center; }
