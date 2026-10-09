@@ -331,6 +331,12 @@ h2.display { font-size: clamp(1.9rem, 3.6vw, 2.7rem); margin-bottom: .3em; }
 .footer li { margin-bottom: 10px; }
 .footer a { color: #b9b3a6; font-size: .95rem; }
 .footer a:hover { color: #fff; }
+.socials { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.socials--lg { justify-content: center; gap: 10px; }
+.social { display: inline-block; padding: 7px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.16); color: #b9b3a6; font-size: .88rem; font-weight: 500; transition: color .2s, border-color .2s, background .2s; }
+.social:hover { color: #fff; border-color: var(--brass); }
+.socials--lg .social { padding: 10px 20px; font-size: .95rem; border-color: var(--line); color: var(--ink); background: var(--surface); }
+.socials--lg .social:hover { color: var(--ink); border-color: var(--brass); background: var(--paper-2); }
 .footer__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 26px; font-size: .85rem; color: #8a857a; }
 
 /* ---------- Reveal animation ---------- */
